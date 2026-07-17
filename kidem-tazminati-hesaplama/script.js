@@ -144,18 +144,70 @@
     results.hidden = false;
   }
 
-  /* Varsayılan tarihler: 3 yıl önce → bugün */
+  /* ---------- Gün / ay / yıl seçicileri ---------- */
   var today = new Date();
-  function iso(d) { return d.toISOString().slice(0, 10); }
-  var endEl = document.getElementById("in-end");
-  var startEl = document.getElementById("in-start");
-  if (endEl && !endEl.value) endEl.value = iso(today);
-  if (startEl && !startEl.value) {
-    var s = new Date(today); s.setFullYear(s.getFullYear() - 3);
-    startEl.value = iso(s);
+  var MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+    "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+
+  function fillSelect(el, items) {
+    if (!el) return;
+    var html = "";
+    items.forEach(function (it) { html += '<option value="' + it[0] + '">' + it[1] + "</option>"; });
+    el.innerHTML = html;
   }
 
-  ["in-start", "in-end", "in-gross", "in-extras", "in-bracket", "in-ihbar"].forEach(function (id) {
+  function buildOptions(prefix) {
+    var days = [], months = [], years = [];
+    for (var d = 1; d <= 31; d++) days.push([d, d]);
+    for (var m = 0; m < 12; m++) months.push([m + 1, MONTHS[m]]);
+    for (var y = today.getFullYear(); y >= 1980; y--) years.push([y, y]);
+    fillSelect(document.getElementById(prefix + "-day"), days);
+    fillSelect(document.getElementById(prefix + "-month"), months);
+    fillSelect(document.getElementById(prefix + "-year"), years);
+  }
+
+  /* Seçili gün, o ay/yılda geçersizse (örn. 31 Şubat) en yakın geçerli güne çekilir */
+  function clampDay(prefix) {
+    var yEl = document.getElementById(prefix + "-year");
+    var mEl = document.getElementById(prefix + "-month");
+    var dEl = document.getElementById(prefix + "-day");
+    var maxDay = new Date(+yEl.value, +mEl.value, 0).getDate();
+    if (+dEl.value > maxDay) dEl.value = maxDay;
+  }
+
+  function composeDate(prefix) {
+    clampDay(prefix);
+    var y = document.getElementById(prefix + "-year").value;
+    var m = document.getElementById(prefix + "-month").value;
+    var d = document.getElementById(prefix + "-day").value;
+    document.getElementById("in-" + (prefix === "start" ? "start" : "end")).value =
+      y + "-" + pad(+m) + "-" + pad(+d);
+  }
+
+  function setTrio(prefix, dateObj) {
+    document.getElementById(prefix + "-day").value = dateObj.getDate();
+    document.getElementById(prefix + "-month").value = dateObj.getMonth() + 1;
+    document.getElementById(prefix + "-year").value = dateObj.getFullYear();
+    composeDate(prefix);
+  }
+
+  buildOptions("start");
+  buildOptions("end");
+
+  /* Varsayılan tarihler: 3 yıl önce → bugün */
+  var startDefault = new Date(today); startDefault.setFullYear(today.getFullYear() - 3);
+  setTrio("start", startDefault);
+  setTrio("end", today);
+
+  ["start", "end"].forEach(function (prefix) {
+    ["-day", "-month", "-year"].forEach(function (part) {
+      var el = document.getElementById(prefix + part);
+      if (el) el.addEventListener("change", function () { composeDate(prefix); recalc(); });
+    });
+  });
+
+  ["in-gross", "in-extras", "in-bracket", "in-ihbar"].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) { el.addEventListener("input", recalc); el.addEventListener("change", recalc); }
   });

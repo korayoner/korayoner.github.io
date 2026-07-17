@@ -179,12 +179,22 @@
         <form id="kidem-form" class="panel">
           <div class="field-grid">
             <p class="panel-q">
-              <label for="in-start">İşe başlama tarihi</label>
-              <input type="date" id="in-start" required>
+              <label id="lbl-start">İşe başlama tarihi</label>
+              <span class="date-trio" role="group" aria-labelledby="lbl-start">
+                <select id="start-day" class="d-day" aria-label="İşe başlama günü"></select>
+                <select id="start-month" class="d-month" aria-label="İşe başlama ayı"></select>
+                <select id="start-year" class="d-year" aria-label="İşe başlama yılı"></select>
+              </span>
+              <input type="hidden" id="in-start">
             </p>
             <p class="panel-q">
-              <label for="in-end">İşten ayrılış tarihi</label>
-              <input type="date" id="in-end" required>
+              <label id="lbl-end">İşten ayrılış tarihi</label>
+              <span class="date-trio" role="group" aria-labelledby="lbl-end">
+                <select id="end-day" class="d-day" aria-label="İşten ayrılış günü"></select>
+                <select id="end-month" class="d-month" aria-label="İşten ayrılış ayı"></select>
+                <select id="end-year" class="d-year" aria-label="İşten ayrılış yılı"></select>
+              </span>
+              <input type="hidden" id="in-end">
             </p>
             <p class="panel-q">
               <label for="in-gross">Son aylık brüt maaş</label>

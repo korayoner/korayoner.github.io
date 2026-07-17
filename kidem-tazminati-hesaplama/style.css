@@ -16,6 +16,27 @@
   color: inherit;
 }
 
+/* Gün / ay / yıl tarih seçici */
+.date-trio {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 5rem;
+  gap: 6px;
+}
+.date-trio select {
+  font: inherit;
+  padding: 8px 8px;
+  border: 1px solid var(--border, rgba(127,127,127,.3));
+  border-radius: 8px;
+  background: var(--surface, transparent);
+  color: inherit;
+  min-width: 0;
+  cursor: pointer;
+}
+.date-trio select:focus-visible {
+  outline: 2px solid var(--accent, #10b981);
+  outline-offset: 1px;
+}
+
 .sum-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
