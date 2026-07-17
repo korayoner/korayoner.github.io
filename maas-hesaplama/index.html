@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brüt Net Maaş Hesaplama 2026 — Netten Brüte, 12 Aylık Bordro | Koray Öner</title>
-  <meta name="description" content="2026 brüt net maaş hesaplama: güncel vergi dilimleri, SGK tavanı, asgari ücret istisnası ve damga vergisiyle ay ay 12 aylık bordro dökümü. Netten brüte de hesaplar — ücretsiz ve reklamsız.">
+  <title>Brüt Net Maaş Hesaplama 2026 — Ücretsiz ve Üyeliksiz, 12 Aylık Bordro | Koray Öner</title>
+  <meta name="description" content="2026 brüt net maaş hesaplama: güncel vergi dilimleri, SGK tavanı, asgari ücret istisnası ve damga vergisiyle ay ay 12 aylık bordro dökümü. Netten brüte de hesaplar, PDF rapor verir — tamamen ücretsiz, üyelik gerektirmez.">
   <meta name="author" content="Koray Öner">
   <link rel="author" href="https://github.com/onerkoray">
   <meta name="theme-color" content="#0e7c66" media="(prefers-color-scheme: light)">
@@ -133,6 +133,19 @@
           <li><a href="#sss">S.S.S.</a></li>
         </ul>
       </nav>
+      <div class="palette">
+        <button class="theme-toggle palette-toggle" type="button" aria-expanded="false" aria-label="Renk paleti seç">
+          <span class="palette-dot" aria-hidden="true"></span>
+          <span class="theme-toggle-label">Renk</span>
+        </button>
+        <div class="palette-pop" hidden>
+          <button type="button" data-accent="yesil" style="--sw:#0e7c66" aria-label="Yeşil tema"></button>
+          <button type="button" data-accent="mavi" style="--sw:#2160b4" aria-label="Mavi tema"></button>
+          <button type="button" data-accent="mor" style="--sw:#6a4fc0" aria-label="Mor tema"></button>
+          <button type="button" data-accent="turuncu" style="--sw:#bb5714" aria-label="Turuncu tema"></button>
+          <button type="button" data-accent="gul" style="--sw:#b0345c" aria-label="Gül tema"></button>
+        </div>
+      </div>
       <button class="theme-toggle" type="button" id="themeToggle" aria-label="Temayı değiştir">
         <span class="theme-toggle-icon" aria-hidden="true"></span>
         <span class="theme-toggle-label">Tema</span>
@@ -147,7 +160,7 @@
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
-        <p class="eyebrow">2026 parametreleriyle · Ücretsiz · Reklamsız</p>
+        <p class="eyebrow">2026 parametreleriyle güncel</p>
         <img class="tool-logo" src="favicon.svg" width="60" height="60" alt="" aria-hidden="true" decoding="async">
         <h1 id="hero-title">Brüt Net Maaş Hesaplama 2026</h1>
         <p class="lede">
@@ -155,12 +168,27 @@
           net maaşınızı <strong>ay ay, 12 aylık bordro dökümü</strong> hâlinde hesaplayın. Netten brüte de
           çevirir. Kayıt yok, reklam yok — her şey tarayıcınızda çalışır.
         </p>
+        <ul class="badges" aria-label="Araç özellikleri">
+          <li>Ücretsiz</li>
+          <li>Üyeliksiz</li>
+          <li>Reklamsız</li>
+          <li>PDF rapor</li>
+        </ul>
       </div>
     </section>
 
     <section id="hesapla" class="calc" aria-labelledby="calc-title">
       <div class="wrap">
         <h2 id="calc-title" class="visually-hidden">Maaş hesaplama aracı</h2>
+
+        <div class="report-head" aria-hidden="true">
+          <img src="favicon.svg" alt="">
+          <div>
+            <div class="report-title">Brüt Net Maaş Raporu — 2026</div>
+            <div class="report-meta">korayoner.github.io/maas-hesaplama · Rapor tarihi: <span id="report-date"></span></div>
+          </div>
+        </div>
+        <div class="report-inputs" id="report-inputs" aria-hidden="true"></div>
 
         <div class="tabs" role="tablist" aria-label="Hesaplama yönü">
           <button role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" class="tab">Brütten nete</button>
@@ -185,6 +213,15 @@
         <div id="results" hidden>
           <div id="summary" aria-live="polite"></div>
           <div id="table"></div>
+          <p class="report-actions no-print">
+            <button type="button" id="printBtn" class="btn btn-primary">🖨 Raporu yazdır / PDF kaydet</button>
+          </p>
+        </div>
+
+        <div class="report-foot" aria-hidden="true">
+          Bu rapor korayoner.github.io/maas-hesaplama adresindeki ücretsiz araçla, 2026 yılı yasal bordro
+          parametreleri kullanılarak bilgilendirme amaçlı oluşturulmuştur. Resmî işlemler için mali müşavirinize danışın.
+          · © Koray Öner
         </div>
       </div>
     </section>

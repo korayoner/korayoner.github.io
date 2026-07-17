@@ -182,5 +182,17 @@
     });
   });
 
+  /* Rapor girdi özeti (yazdırma öncesi doldurulur) */
+  window.buildReportInputs = function () {
+    var el = document.getElementById("report-inputs");
+    if (!el) return;
+    var netMode = document.getElementById("tab-2").getAttribute("aria-selected") === "true";
+    var parts = netMode
+      ? ["<strong>Hesaplama yönü:</strong> Netten brüte", "<strong>Hedef aylık net (Ocak):</strong> " + fmt(num("in-net")) + " TL"]
+      : ["<strong>Hesaplama yönü:</strong> Brütten nete", "<strong>Aylık brüt maaş:</strong> " + fmt(num("in-gross")) + " TL"];
+    parts.push("<strong>Dönem:</strong> 2026 yılı yasal parametreleri");
+    el.innerHTML = parts.join(" &nbsp;·&nbsp; ");
+  };
+
   recalcGross();
 })();

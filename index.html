@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Koray Öner — Ücretsiz Hesaplama Araçları ve Açık Kaynak Projeler</title>
-  <meta name="description" content="Koray Öner'in hesaplama araçları sitesi: brüt net maaş hesaplama, KDV, yüzde, yaş ve final notu hesaplama gibi ücretsiz, reklamsız ve açık kaynak web araçları.">
+  <title>Koray Öner — Ücretsiz ve Üyeliksiz Hesaplama Araçları</title>
+  <meta name="description" content="Koray Öner'in hesaplama araçları: brüt net maaş, kıdem tazminatı, KDV ve yüzde hesaplama. Tamamen ücretsiz, üyelik gerektirmez, reklamsız ve açık kaynak — tüm hesaplamalar tarayıcınızda yapılır.">
   <meta name="author" content="Koray Öner">
   <link rel="author" href="https://github.com/korayoner">
   <meta name="theme-color" content="#0e7c66" media="(prefers-color-scheme: light)">
@@ -27,8 +27,8 @@
 
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Koray Öner">
-  <meta property="og:title" content="Koray Öner — Ücretsiz Hesaplama Araçları">
-  <meta property="og:description" content="Brüt net maaş hesaplama başta olmak üzere ücretsiz, reklamsız ve açık kaynak web araçları.">
+  <meta property="og:title" content="Koray Öner — Ücretsiz ve Üyeliksiz Hesaplama Araçları">
+  <meta property="og:description" content="Maaş, kıdem tazminatı, KDV ve yüzde hesaplama — ücretsiz, üyeliksiz, reklamsız ve açık kaynak.">
   <meta property="og:url" content="https://korayoner.github.io/">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:image" content="https://korayoner.github.io/images/koray-oner-kapak.png">
@@ -141,6 +141,19 @@
           <li><a href="https://github.com/korayoner" rel="noopener">GitHub</a></li>
         </ul>
       </nav>
+      <div class="palette">
+        <button class="theme-toggle palette-toggle" type="button" aria-expanded="false" aria-label="Renk paleti seç">
+          <span class="palette-dot" aria-hidden="true"></span>
+          <span class="theme-toggle-label">Renk</span>
+        </button>
+        <div class="palette-pop" hidden>
+          <button type="button" data-accent="yesil" style="--sw:#0e7c66" aria-label="Yeşil tema"></button>
+          <button type="button" data-accent="mavi" style="--sw:#2160b4" aria-label="Mavi tema"></button>
+          <button type="button" data-accent="mor" style="--sw:#6a4fc0" aria-label="Mor tema"></button>
+          <button type="button" data-accent="turuncu" style="--sw:#bb5714" aria-label="Turuncu tema"></button>
+          <button type="button" data-accent="gul" style="--sw:#b0345c" aria-label="Gül tema"></button>
+        </div>
+      </div>
       <button class="theme-toggle" type="button" id="themeToggle" aria-label="Temayı değiştir">
         <span class="theme-toggle-icon" aria-hidden="true"></span>
         <span class="theme-toggle-label">Tema</span>
@@ -156,12 +169,18 @@
         <p class="eyebrow reveal">Hesaplama Araçları · Açık Kaynak</p>
         <h1 id="hero-title" class="reveal" style="--reveal-delay:80ms">Merhaba, ben <span class="accent">Koray Öner</span>.</h1>
         <p class="lede reveal" style="--reveal-delay:160ms">
-          Günlük hayatı kolaylaştıran ücretsiz ve reklamsız hesaplama araçları geliştiriyorum.
-          Bu sitede 2026 parametreleriyle çalışan brüt–net maaş hesaplama aracımı ve diğer
-          projelerimin bağlantılarını bulabilirsiniz.
+          Günlük hayatı kolaylaştıran hesaplama araçları geliştiriyorum: kesin, gizli ve anında.
+          Hiçbir araç üyelik istemez, hepsi tamamen ücretsizdir ve bütün hesaplamalar
+          tarayıcınızda yapılır — verileriniz cihazınızdan çıkmaz.
         </p>
+        <ul class="badges reveal" style="--reveal-delay:200ms" aria-label="Site özellikleri">
+          <li>Ücretsiz</li>
+          <li>Üyeliksiz</li>
+          <li>Reklamsız</li>
+          <li>Açık kaynak</li>
+        </ul>
         <div class="hero-actions reveal" style="--reveal-delay:240ms">
-          <a class="btn btn-primary" href="maas-hesaplama/">Maaş hesaplama aracını aç</a>
+          <a class="btn btn-primary" href="#projects">Araçlara göz at</a>
           <a class="btn btn-ghost" href="https://github.com/korayoner" rel="noopener">GitHub profilim</a>
         </div>
       </div>
@@ -204,10 +223,20 @@
       <div class="wrap">
         <div class="section-head reveal">
           <h2 id="projects-title">Araçlar</h2>
-          <p>Bu sitede yayınlanan araç ve diğer projelerime bağlantılar.</p>
+          <p>Tüm araçlar ücretsizdir ve üyelik gerektirmez. Aradığınız aracı yazın ya da kategori seçin.</p>
+        </div>
+        <div class="tool-search reveal" role="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="tool-search-input" placeholder="Araç ara: maaş, kıdem, KDV, yüzde…" aria-label="Araçlarda ara">
+        </div>
+        <div class="chips reveal" role="group" aria-label="Kategori filtresi">
+          <button type="button" class="chip" data-filter="hepsi" aria-pressed="true">Tümü</button>
+          <button type="button" class="chip" data-filter="maas" aria-pressed="false">Maaş &amp; Tazminat</button>
+          <button type="button" class="chip" data-filter="vergi" aria-pressed="false">Vergi &amp; Finans</button>
+          <button type="button" class="chip" data-filter="genel" aria-pressed="false">Genel</button>
         </div>
         <ul class="project-grid">
-          <li class="project-card reveal">
+          <li class="project-card reveal" data-cat="maas" data-tags="maaş brüt net bordro sgk vergi asgari ücret salary">
             <div class="project-swatch" aria-hidden="true">
               <span style="background:#0a5f4e"></span>
               <span style="background:#0e7c66"></span>
@@ -215,13 +244,14 @@
               <span style="background:#2bb596"></span>
             </div>
             <div class="project-body">
-              <h3><span class="logo-badge" aria-hidden="true">₺</span> <a href="maas-hesaplama/">Brüt Net Maaş Hesaplama 2026</a></h3>
+              <h3><span class="logo-badge" aria-hidden="true"><img src="maas-hesaplama/favicon.svg" width="24" height="24" alt=""></span> <a href="maas-hesaplama/">Brüt Net Maaş Hesaplama 2026</a></h3>
+              <p class="card-badges" aria-hidden="true"><span>Ücretsiz</span><span>Üyeliksiz</span></p>
               <p>Güncel vergi dilimleri, SGK tavanı ve asgari ücret istisnasıyla ay ay 12 aylık bordro
-              dökümü. Netten brüte de kuruş hassasiyetinde hesaplar.</p>
+              dökümü. Netten brüte de kuruş hassasiyetinde hesaplar; PDF rapor alabilirsiniz.</p>
               <p class="project-links"><a href="maas-hesaplama/">Aracı aç</a></p>
             </div>
           </li>
-          <li class="project-card reveal">
+          <li class="project-card reveal" data-cat="maas" data-tags="kıdem ihbar tazminat tavan işten çıkış istifa fesih">
             <div class="project-swatch" aria-hidden="true">
               <span style="background:#0e7c66"></span>
               <span style="background:#2bb596"></span>
@@ -229,13 +259,14 @@
               <span style="background:#0a5f4e"></span>
             </div>
             <div class="project-body">
-              <h3><span class="logo-badge" aria-hidden="true">₺</span> <a href="kidem-tazminati-hesaplama/">Kıdem ve İhbar Tazminatı Hesaplama 2026</a></h3>
+              <h3><span class="logo-badge" aria-hidden="true"><img src="kidem-tazminati-hesaplama/favicon.svg" width="24" height="24" alt=""></span> <a href="kidem-tazminati-hesaplama/">Kıdem ve İhbar Tazminatı Hesaplama 2026</a></h3>
+              <p class="card-badges" aria-hidden="true"><span>Ücretsiz</span><span>Üyeliksiz</span></p>
               <p>Güncel kıdem tazminatı tavanı ve giydirilmiş brüt ücretle kıdem tazminatını gün gün
-              hesaplar; ihbar tazminatını da vergisiyle birlikte gösterir.</p>
+              hesaplar; ihbar tazminatını da vergisiyle gösterir, PDF rapor sunar.</p>
               <p class="project-links"><a href="kidem-tazminati-hesaplama/">Aracı aç</a></p>
             </div>
           </li>
-          <li class="project-card reveal">
+          <li class="project-card reveal" data-cat="vergi" data-tags="kdv katma değer vergisi dahil hariç fatura">
             <div class="project-swatch" aria-hidden="true">
               <span style="background:#1f9c80"></span>
               <span style="background:#0e7c66"></span>
@@ -244,12 +275,13 @@
             </div>
             <div class="project-body">
               <h3><span class="logo-badge" aria-hidden="true">₺</span> <a href="https://onerkoray.github.io/kdv-hesaplama/">KDV Hesaplama</a></h3>
+              <p class="card-badges" aria-hidden="true"><span>Ücretsiz</span><span>Üyeliksiz</span></p>
               <p>KDV hariç tutara KDV ekleyin ya da KDV dahil tutardan KDV'yi ayırın. %1, %10 ve %20
               oranlarıyla anında sonuç.</p>
               <p class="project-links"><a href="https://onerkoray.github.io/kdv-hesaplama/">Aracı aç</a></p>
             </div>
           </li>
-          <li class="project-card reveal">
+          <li class="project-card reveal" data-cat="genel" data-tags="yüzde oran indirim artış azalış zam">
             <div class="project-swatch" aria-hidden="true">
               <span style="background:#0a5f4e"></span>
               <span style="background:#0e7c66"></span>
@@ -258,12 +290,13 @@
             </div>
             <div class="project-body">
               <h3><span class="logo-badge" aria-hidden="true">%</span> <a href="https://onerkoray.github.io/yuzde-hesaplama/">Yüzde Hesaplama</a></h3>
+              <p class="card-badges" aria-hidden="true"><span>Ücretsiz</span><span>Üyeliksiz</span></p>
               <p>Bir sayının yüzdesini, iki sayı arasındaki oranı ve yüzde artış/azalışı anında
               hesaplayan pratik, reklamsız araç.</p>
               <p class="project-links"><a href="https://onerkoray.github.io/yuzde-hesaplama/">Aracı aç</a></p>
             </div>
           </li>
-          <li class="project-card project-card--soon reveal">
+          <li class="project-card project-card--soon reveal" data-cat="genel" data-tags="şifre hız testi deprem koleksiyon tüm projeler">
             <div class="project-body">
               <h3>Tüm projeler</h3>
               <p>Şifre araçları, internet hız testi, son depremler ve daha fazlası için ana proje
@@ -272,6 +305,7 @@
             </div>
           </li>
         </ul>
+        <p class="no-results" id="no-results" hidden>Aramanızla eşleşen araç bulunamadı. Farklı bir anahtar kelime deneyin.</p>
       </div>
     </section>
 

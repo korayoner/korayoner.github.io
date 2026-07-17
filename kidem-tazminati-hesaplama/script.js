@@ -160,5 +160,19 @@
     if (el) { el.addEventListener("input", recalc); el.addEventListener("change", recalc); }
   });
 
+  /* Rapor girdi özeti (yazdırma öncesi doldurulur) */
+  window.buildReportInputs = function () {
+    var el = document.getElementById("report-inputs");
+    if (!el) return;
+    function tr(v) { return v ? new Date(v + "T00:00:00").toLocaleDateString("tr-TR") : "—"; }
+    el.innerHTML = [
+      "<strong>İşe başlama:</strong> " + tr(document.getElementById("in-start").value),
+      "<strong>İşten ayrılış:</strong> " + tr(document.getElementById("in-end").value),
+      "<strong>Son brüt maaş:</strong> " + fmt(num("in-gross")) + " TL",
+      "<strong>Aylık ek ödemeler:</strong> " + fmt(num("in-extras")) + " TL",
+      "<strong>Uygulanan tavan:</strong> " + fmt(ceilingFor(document.getElementById("in-end").value)) + " TL"
+    ].join(" &nbsp;·&nbsp; ");
+  };
+
   recalc();
 })();

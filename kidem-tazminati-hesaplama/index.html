@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kıdem ve İhbar Tazminatı Hesaplama 2026 — Güncel Tavanla | Koray Öner</title>
-  <meta name="description" content="2026 kıdem tazminatı hesaplama: güncel tavan (Temmuz–Aralık 73.729,84 TL), giydirilmiş brüt ücret, damga vergisi ve ihbar tazminatıyla birlikte gün gün hesaplayın. Ücretsiz ve reklamsız.">
+  <title>Kıdem ve İhbar Tazminatı Hesaplama 2026 — Ücretsiz ve Üyeliksiz | Koray Öner</title>
+  <meta name="description" content="2026 kıdem tazminatı hesaplama: güncel tavan (Temmuz–Aralık 73.729,84 TL), giydirilmiş brüt ücret, damga vergisi ve ihbar tazminatıyla gün gün hesaplayın; PDF rapor alın. Tamamen ücretsiz, üyelik gerektirmez.">
   <meta name="author" content="Koray Öner">
   <link rel="author" href="https://github.com/korayoner">
   <meta name="theme-color" content="#0e7c66" media="(prefers-color-scheme: light)">
@@ -132,6 +132,19 @@
           <li><a href="#sss">S.S.S.</a></li>
         </ul>
       </nav>
+      <div class="palette">
+        <button class="theme-toggle palette-toggle" type="button" aria-expanded="false" aria-label="Renk paleti seç">
+          <span class="palette-dot" aria-hidden="true"></span>
+          <span class="theme-toggle-label">Renk</span>
+        </button>
+        <div class="palette-pop" hidden>
+          <button type="button" data-accent="yesil" style="--sw:#0e7c66" aria-label="Yeşil tema"></button>
+          <button type="button" data-accent="mavi" style="--sw:#2160b4" aria-label="Mavi tema"></button>
+          <button type="button" data-accent="mor" style="--sw:#6a4fc0" aria-label="Mor tema"></button>
+          <button type="button" data-accent="turuncu" style="--sw:#bb5714" aria-label="Turuncu tema"></button>
+          <button type="button" data-accent="gul" style="--sw:#b0345c" aria-label="Gül tema"></button>
+        </div>
+      </div>
       <button class="theme-toggle" type="button" id="themeToggle" aria-label="Temayı değiştir">
         <span class="theme-toggle-icon" aria-hidden="true"></span>
         <span class="theme-toggle-label">Tema</span>
@@ -146,7 +159,7 @@
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
-        <p class="eyebrow">Güncel 2026 tavanıyla · Ücretsiz · Reklamsız</p>
+        <p class="eyebrow">Güncel 2026 tavanıyla</p>
         <img class="tool-logo" src="favicon.svg" width="60" height="60" alt="" aria-hidden="true" decoding="async">
         <h1 id="hero-title">Kıdem ve İhbar Tazminatı Hesaplama 2026</h1>
         <p class="lede">
@@ -154,12 +167,27 @@
           giydirilmiş brüt ücret ve damga vergisiyle kıdem tazminatınızı <strong>gün gün</strong> hesaplayın.
           İhbar tazminatını da birlikte gösterir. Kayıt yok, reklam yok — her şey tarayıcınızda çalışır.
         </p>
+        <ul class="badges" aria-label="Araç özellikleri">
+          <li>Ücretsiz</li>
+          <li>Üyeliksiz</li>
+          <li>Reklamsız</li>
+          <li>PDF rapor</li>
+        </ul>
       </div>
     </section>
 
     <section id="hesapla" class="calc" aria-labelledby="calc-title">
       <div class="wrap">
         <h2 id="calc-title" class="visually-hidden">Kıdem ve ihbar tazminatı hesaplama aracı</h2>
+
+        <div class="report-head" aria-hidden="true">
+          <img src="favicon.svg" alt="">
+          <div>
+            <div class="report-title">Kıdem ve İhbar Tazminatı Raporu — 2026</div>
+            <div class="report-meta">korayoner.github.io/kidem-tazminati-hesaplama · Rapor tarihi: <span id="report-date"></span></div>
+          </div>
+        </div>
+        <div class="report-inputs" id="report-inputs" aria-hidden="true"></div>
 
         <form id="kidem-form" class="panel">
           <div class="field-grid">
@@ -198,8 +226,17 @@
         <div id="results" hidden>
           <div id="summary" aria-live="polite"></div>
           <div id="detail"></div>
+          <p class="report-actions no-print">
+            <button type="button" id="printBtn" class="btn btn-primary">🖨 Raporu yazdır / PDF kaydet</button>
+          </p>
         </div>
         <p id="msg" class="muted-note" aria-live="polite" hidden></p>
+
+        <div class="report-foot" aria-hidden="true">
+          Bu rapor korayoner.github.io/kidem-tazminati-hesaplama adresindeki ücretsiz araçla, 1475 sayılı İş Kanunu m.14
+          ve 2026 tavan tutarları kullanılarak bilgilendirme amaçlı oluşturulmuştur. Resmî işlemler için iş hukuku uzmanına danışın.
+          · © Koray Öner
+        </div>
       </div>
     </section>
 
