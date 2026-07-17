@@ -3,9 +3,9 @@
    ========================================================================= */
 :root {
   color-scheme: light dark;
-  /* Renk paleti: --accent* değişkenleri data-accent ile değiştirilebilir */
-  --accent: #0e7c66; --accent-strong: #0a5f4e;
-  --accent-bright: #2bb596; --accent-bright-2: #1f9c80; --accent-glow: #4fd3b4;
+  /* Renk paleti: --accent* değişkenleri data-accent ile değiştirilebilir (varsayılan: mavi) */
+  --accent: #2160b4; --accent-strong: #194e94;
+  --accent-bright: #5b9be6; --accent-bright-2: #3f87d9; --accent-glow: #8ec1f2;
   --brand: var(--accent); --brand-strong: var(--accent-strong); --brand-contrast: #fff;
   --bg: #f7f5f0; --surface: #fff; --surface-2: #f0ece4; --border: #e2ddd2;
   --text: #17201d; --text-muted: #56605c; --focus: var(--accent);
@@ -35,8 +35,8 @@
 }
 
 /* ---- Seçilebilir renk paletleri ---- */
-:root[data-accent="mavi"]    { --accent:#2160b4; --accent-strong:#194e94; --accent-bright:#5b9be6; --accent-bright-2:#3f87d9; --accent-glow:#8ec1f2; }
-:root[data-accent="mor"]     { --accent:#6a4fc0; --accent-strong:#57409f; --accent-bright:#a08ae0; --accent-bright-2:#8a70d6; --accent-glow:#c3b4ee; }
+:root[data-accent="yesil"]     { --accent:#0e7c66; --accent-strong:#0a5f4e; --accent-bright:#2bb596; --accent-bright-2:#1f9c80; --accent-glow:#4fd3b4; }
+:root[data-accent="camgobegi"] { --accent:#0c7f93; --accent-strong:#0a6273; --accent-bright:#3fb9cf; --accent-bright-2:#2aa3ba; --accent-glow:#7fd6e6; }
 :root[data-accent="turuncu"] { --accent:#bb5714; --accent-strong:#9a4610; --accent-bright:#e8905a; --accent-bright-2:#d97b3f; --accent-glow:#f3b98e; }
 :root[data-accent="gul"]     { --accent:#b0345c; --accent-strong:#92294b; --accent-bright:#e07399; --accent-bright-2:#d15a85; --accent-glow:#eda6c0; }
 

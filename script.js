@@ -27,16 +27,41 @@
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---- Renk paleti seçici ---- */
+  /* ---- Renk paleti seçici (header'a otomatik eklenir) ---- */
   var ACCENT_KEY = "onerkoray.accent";
+  var ACCENTS = [
+    ["mavi", "#2160b4", "Mavi"],
+    ["yesil", "#0e7c66", "Yeşil"],
+    ["camgobegi", "#0c7f93", "Camgöbeği"],
+    ["turuncu", "#bb5714", "Turuncu"],
+    ["gul", "#b0345c", "Gül"]
+  ];
   function applyAccent(name) {
-    if (name && name !== "yesil") document.documentElement.setAttribute("data-accent", name);
+    if (name && name !== "mavi") document.documentElement.setAttribute("data-accent", name);
     else document.documentElement.removeAttribute("data-accent");
     document.querySelectorAll(".palette-pop button").forEach(function (b) {
-      b.setAttribute("aria-pressed", String((b.getAttribute("data-accent") || "yesil") === (name || "yesil")));
+      b.setAttribute("aria-pressed", String((b.getAttribute("data-accent") || "mavi") === (name || "mavi")));
     });
   }
-  applyAccent(localStorage.getItem(ACCENT_KEY) || "yesil");
+  applyAccent(localStorage.getItem(ACCENT_KEY) || "mavi");
+
+  /* Widget yoksa header'a enjekte et (tüm alt sayfalarda markup gerektirmez) */
+  var headerInner = document.querySelector(".site-header .header-inner");
+  if (headerInner && !headerInner.querySelector(".palette")) {
+    var pal = document.createElement("div");
+    pal.className = "palette";
+    pal.innerHTML =
+      '<button class="theme-toggle palette-toggle" type="button" aria-expanded="false" aria-label="Renk paleti seç">' +
+      '<span class="palette-dot" aria-hidden="true"></span><span class="theme-toggle-label">Renk</span></button>' +
+      '<div class="palette-pop" hidden>' +
+      ACCENTS.map(function (a) {
+        return '<button type="button" data-accent="' + a[0] + '" style="--sw:' + a[1] + '" aria-label="' + a[2] + ' tema"></button>';
+      }).join("") +
+      "</div>";
+    var themeBtn = headerInner.querySelector("#themeToggle");
+    headerInner.insertBefore(pal, themeBtn);
+    applyAccent(localStorage.getItem(ACCENT_KEY) || "mavi");
+  }
 
   var palToggle = document.querySelector(".palette-toggle");
   var palPop = document.querySelector(".palette-pop");
