@@ -201,8 +201,8 @@
   }
 
   /* ---------- Kart rozetleri ---------- */
-  var NEW_TOOLS = ["kidem-tazminati-hesaplama/", "gumruk-vergisi-hesaplama/", "otv-hesaplama/", "mtv-hesaplama/", "serbest-meslek-makbuzu-hesaplama/"];
-  var HOT_TOOL = "maas-hesaplama/";
+  var NEW_TOOLS = ["https://onerkoray.github.io/kidem-tazminati-hesaplama/", "gumruk-vergisi-hesaplama/", "otv-hesaplama/", "mtv-hesaplama/", "serbest-meslek-makbuzu-hesaplama/"];
+  var HOT_TOOL = "https://onerkoray.github.io/maas-hesaplama/";
   document.querySelectorAll(".project-card h3 a").forEach(function (a) {
     var href = a.getAttribute("href") || "";
     if (href === HOT_TOOL) a.insertAdjacentHTML("afterend", '<span class="card-flag flag-hot">Popüler</span>');
